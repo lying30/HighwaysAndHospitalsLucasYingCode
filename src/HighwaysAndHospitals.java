@@ -1,10 +1,12 @@
+import java.util.ArrayList;
+
 /**
  * Highways & Hospitals
  * A puzzle created by Zach Blick
  * for Adventures in Algorithms
  * at Menlo School in Atherton, CA
  *
- * Completed by: [YOUR NAME HERE]
+ * Completed by: [Lucas Ying]
  *
  */
 
@@ -15,6 +17,24 @@ public class HighwaysAndHospitals {
      *  hospital access for all citizens in Menlo County.
      */
     public static long cost(int n, int hospitalCost, int highwayCost, int cities[][]) {
+        // For each city figure out every city it connects to
+        // Then BFS from a starting city
+        // as you look through the potential solution for if the city is connected with another city
+        // and has a hospital, add a hospitalcost or highwaycost to a sum of moneySpent every time you add one
+        // at the end of BFS return the money spent
+
+        // If the hospital cost is less than the highway cost build a hospital at every city
+        if (hospitalCost< highwayCost) {
+            return (long) n*hospitalCost;
+        }
+        else {
+            //build array
+            //and complete bfs search fo rbest solution
+
+        }
+
+
+
         return 0;
     }
 }
