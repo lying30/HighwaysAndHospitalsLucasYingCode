@@ -1,10 +1,10 @@
 Name: YOUR NAME HERE
 
-| Date         |   Time   |                                                                       Update |
-|:-------------|:--------:|-----------------------------------------------------------------------------:|
-| September 10 | 2-2:30pm | Figured out how problem works and worked through some ideas with pseudocode. |
-|              |          |                                                                              |
-|              |          |                                                                              |
+| Date         |      Time       |                                                                                                                                                                                                                                                                                                                                     Update |
+|:-------------|:---------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| September 10 |    2-2:30pm     |                                                                                                                                                                                                                                                               Figured out how problem works and worked through some ideas with pseudocode. |
+| September 11 | 10:30pm-12:02am | Been thinking hard about this problem set and I think it will be important to one get rid of the first base case of the problem. Then, make sure I can know the number of neighbors or degrees of each city so I made the loop. I think there will be some sort of BFS to search through it but still pondering how to go about that step. |
+|              |                 |                                                                                                                                                                                                                                                                                                                                            |
 
 
 To add a new row to the table, click into a cell and then hit shift-enter.

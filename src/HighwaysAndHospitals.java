@@ -27,11 +27,19 @@ public class HighwaysAndHospitals {
         if (hospitalCost< highwayCost) {
             return (long) n*hospitalCost;
         }
-        else {
+
+
             //build array
             //and complete bfs search fo rbest solution
+        int[][] graph = new int[n][];
+        int[] degrees = new int[n];
 
+        // Count degrees of every city to know how many options each city has
+        for (int[] road: cities){
+            degrees[road[0]-1]++;
+            degrees[road[1]-1]++;
         }
+
 
 
 
