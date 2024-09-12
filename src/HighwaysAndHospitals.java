@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Highways & Hospitals
@@ -40,7 +42,14 @@ public class HighwaysAndHospitals {
             degrees[road[1]-1]++;
         }
 
+        Queue<Integer> queue = new LinkedList<>();
+        boolean[] visited = new boolean[n];
 
+        for (int i = 0; i<n; i++){
+            while (!visited[n]){
+                // do the bfs
+            }
+        }
 
 
         return 0;
