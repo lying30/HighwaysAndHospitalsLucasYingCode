@@ -36,20 +36,33 @@ public class HighwaysAndHospitals {
         int[][] graph = new int[n][];
         int[] degrees = new int[n];
 
-        // Count degrees of every city to know how many options each city has
-        for (int[] road: cities){
-            degrees[road[0]-1]++;
-            degrees[road[1]-1]++;
-        }
+        // Make a map of the cities to their parents
 
-        Queue<Integer> queue = new LinkedList<>();
-        boolean[] visited = new boolean[n];
+        for (int i = 0; i < n; i++){
+            for (int j = 0; j<cities[i].length){
+                if (cities[i][j] != null){
+                    cities[i][j] = graph[i][j];
+                }
+                else {
 
-        for (int i = 0; i<n; i++){
-            while (!visited[n]){
-                // do the bfs
+                }
             }
         }
+//
+//        // Count degrees of every city to know how many options each city has
+//        for (int[] road: cities){
+//            degrees[road[0]-1]++;
+//            degrees[road[1]-1]++;
+//        }
+//
+//        Queue<Integer> queue = new LinkedList<>();
+//        boolean[] visited = new boolean[n];
+//
+//        for (int i = 0; i<n; i++){
+//            while (!visited[n]){
+//                // do the bfs
+//            }
+//        }
 
 
         return 0;
