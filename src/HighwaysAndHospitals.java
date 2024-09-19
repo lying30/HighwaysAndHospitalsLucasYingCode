@@ -33,17 +33,35 @@ public class HighwaysAndHospitals {
             roots[i] = i;
         }
 
-        // Do path compression method
+        // Path compression method
+        int pathCompression(int A) {
+            int X = A;
 
-        //Pseudocode from slides if needed
-        // For each edge AB:
-        //	X = A
-        //	While city X is not its root:
-        //		X = roots[X]
-        //	While city A is not its root:
-        //		temp = roots[A]
-        //		roots[A] = X
-        //		A = temp
+            // While city X is not its root, find the root
+            while (X != roots[X]) {
+                X = roots[X];
+            }
+
+            // While city A is not its root
+            // Compress the path
+            while (A != roots[A]) {
+                int temp = roots[A];
+                roots[A] = X;
+                A = temp;
+            }
+            return X;
+        }
+
+        for (int i = 0; i < cities.length; i++) {
+
+            int cityA =
+            int cityB =
+
+            while (cityA != roots[cityA]) {
+                cityA = roots[cityA];
+            }
+
+        }
 
         // For each edge AB:
         //	While city A is not its root:
