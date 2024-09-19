@@ -19,50 +19,41 @@ public class HighwaysAndHospitals {
      *  hospital access for all citizens in Menlo County.
      */
     public static long cost(int n, int hospitalCost, int highwayCost, int cities[][]) {
-        // For each city figure out every city it connects to
-        // Then BFS from a starting city
-        // as you look through the potential solution for if the city is connected with another city
-        // and has a hospital, add a hospitalcost or highwaycost to a sum of moneySpent every time you add one
-        // at the end of BFS return the money spent
+
 
         // If the hospital cost is less than the highway cost build a hospital at every city
         if (hospitalCost< highwayCost) {
             return (long) n*hospitalCost;
         }
 
-
-            //build array
-            //and complete bfs search fo rbest solution
-        int[][] graph = new int[n][];
-        int[] degrees = new int[n];
-
-        // Make a map of the cities to their parents
-
-        for (int i = 0; i < n; i++){
-            for (int j = 0; j<cities[i].length){
-                if (cities[i][j] != null){
-                    cities[i][j] = graph[i][j];
-                }
-                else {
-
-                }
-            }
+        // Array of the roots to keep track of the roots of each city
+        int[] roots = new int[n];
+        for (int i = 0; i < n; i++) {
+            // Make each city its own root to start
+            roots[i] = i;
         }
-//
-//        // Count degrees of every city to know how many options each city has
-//        for (int[] road: cities){
-//            degrees[road[0]-1]++;
-//            degrees[road[1]-1]++;
-//        }
-//
-//        Queue<Integer> queue = new LinkedList<>();
-//        boolean[] visited = new boolean[n];
-//
-//        for (int i = 0; i<n; i++){
-//            while (!visited[n]){
-//                // do the bfs
-//            }
-//        }
+
+        // Do path compression method
+
+        //Pseudocode from slides if needed
+        // For each edge AB:
+        //	X = A
+        //	While city X is not its root:
+        //		X = roots[X]
+        //	While city A is not its root:
+        //		temp = roots[A]
+        //		roots[A] = X
+        //		A = temp
+
+        // For each edge AB:
+        //	While city A is not its root:
+        //		A = roots[A]
+        //	While city B is not its root:
+        //		B = roots[B]
+        //	If A != B:
+        //		roots[B] = A
+        //
+        //Calculate cost and return
 
 
         return 0;
