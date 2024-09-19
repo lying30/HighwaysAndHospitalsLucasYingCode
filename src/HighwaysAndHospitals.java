@@ -14,48 +14,48 @@ import java.util.Queue;
 
 public class HighwaysAndHospitals {
 
-    /**
-     * TODO: Complete this function, cost(), to return the minimum cost to provide
-     *  hospital access for all citizens in Menlo County.
-     */
+
+
+    // Path compression method
+    public static int pathCompression(int A, int[] roots) {
+        int X = A;
+
+        // Traverse up the tree to find the root
+        while (X != roots[X]) {
+            X = roots[X];
+        }
+
+        // Compress the path using path compression
+        // Make every city on the path from A to the root point directly to the root
+        // This flattens down the current branch to be at one level in depth
+        while (A != roots[A]) {
+            int temp = roots[A];
+            roots[A] = X;
+            A = temp;
+        }
+        return X;
+    }
+
     public static long cost(int n, int hospitalCost, int highwayCost, int cities[][]) {
 
-
         // If the hospital cost is less than the highway cost build a hospital at every city
-        if (hospitalCost< highwayCost) {
+        // This is a unique scenario when it is cheaper to build hospitals in every city
+        if (hospitalCost <= highwayCost) {
             return (long) n*hospitalCost;
         }
 
-        // Array of the roots to keep track of the roots of each city
+        // Array to keep track of the roots of each city
         int[] roots = new int[n];
         for (int i = 0; i < n; i++) {
             // Make each city its own root to start
             roots[i] = i;
         }
 
-        // Path compression method
-        int pathCompression(int A) {
-            int X = A;
-
-            // While city X is not its root, find the root
-            while (X != roots[X]) {
-                X = roots[X];
-            }
-
-            // While city A is not its root
-            // Compress the path
-            while (A != roots[A]) {
-                int temp = roots[A];
-                roots[A] = X;
-                A = temp;
-            }
-            return X;
-        }
-
+        // Process all the highways (paired connections between cities)
         for (int i = 0; i < cities.length; i++) {
-
-            int cityA =
-            int cityB =
+            // Shifting each cities index to 0
+            int cityA = cities[i][0] - 1;
+            int cityB = cities[i][1] - 1;
 
             while (cityA != roots[cityA]) {
                 cityA = roots[cityA];
@@ -64,35 +64,21 @@ public class HighwaysAndHospitals {
             while (cityB != roots[cityB]) {
                 cityB = roots[cityB];
             }
+
             // Connect the roots if they are different (union them)
             if (cityA != cityB) {
                 roots[cityB] = cityA;
             }
         }
-        // Calculate component sizes
-        int [] componentSize = new int[n];
+        // Count the number of components
+        int components = 0;
         for (int i = 0; i < n; i++) {
-            // Find the root of the city
-            int root = pathCompression(i);
-            // Increment the size of the component for that root
-            componentSize[root]++;
+            if (pathCompression(i, roots) == i) {
+                components++;
+            }
         }
 
-        // Calculate the total cost
-
-
-
-        // For each edge AB:
-        //	While city A is not its root:
-        //		A = roots[A]
-        //	While city B is not its root:
-        //		B = roots[B]
-        //	If A != B:
-        //		roots[B] = A
-        //
-        //Calculate cost and return
-
-
-        return 0;
+        // Calculate the total cost and return it
+        return (long) hospitalCost * components + (long) highwayCost * (n - components);
     }
 }
