@@ -61,7 +61,26 @@ public class HighwaysAndHospitals {
                 cityA = roots[cityA];
             }
 
+            while (cityB != roots[cityB]) {
+                cityB = roots[cityB];
+            }
+            // Connect the roots if they are different (union them)
+            if (cityA != cityB) {
+                roots[cityB] = cityA;
+            }
         }
+        // Calculate component sizes
+        int [] componentSize = new int[n];
+        for (int i = 0; i < n; i++) {
+            // Find the root of the city
+            int root = pathCompression(i);
+            // Increment the size of the component for that root
+            componentSize[root]++;
+        }
+
+        // Calculate the total cost
+
+
 
         // For each edge AB:
         //	While city A is not its root:
