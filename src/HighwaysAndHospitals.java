@@ -14,9 +14,7 @@ import java.util.Queue;
 
 public class HighwaysAndHospitals {
 
-
-
-    // Path compression method
+    // Path compression function
     public static int pathCompression(int A, int[] roots) {
         int X = A;
 
@@ -53,24 +51,21 @@ public class HighwaysAndHospitals {
 
         // Process all the highways (paired connections between cities)
         for (int i = 0; i < cities.length; i++) {
-            // Shifting each cities index to 0
+            // Shifting each cities index to start at 0
             int cityA = cities[i][0] - 1;
             int cityB = cities[i][1] - 1;
 
-            while (cityA != roots[cityA]) {
-                cityA = roots[cityA];
-            }
+            // Find the root of each city using path compression
+            int rootA = pathCompression(cityA, roots);
+            int rootB = pathCompression(cityB, roots);
 
-            while (cityB != roots[cityB]) {
-                cityB = roots[cityB];
-            }
-
-            // Connect the roots if they are different (union them)
-            if (cityA != cityB) {
-                roots[cityB] = cityA;
+            // If cities A and B are not already connected, connect them (union)
+            if (rootA != rootB) {
+                // Merge city B's root into city A's root
+                roots[rootB] = rootA;
             }
         }
-        // Count the number of components
+        // Count the number of unique components
         int components = 0;
         for (int i = 0; i < n; i++) {
             if (pathCompression(i, roots) == i) {
@@ -78,7 +73,7 @@ public class HighwaysAndHospitals {
             }
         }
 
-        // Calculate the total cost and return it
+        // Calculate the total cost using the equation from class and return it
         return (long) hospitalCost * components + (long) highwayCost * (n - components);
     }
 }
